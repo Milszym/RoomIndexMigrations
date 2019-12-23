@@ -8,7 +8,7 @@ import net.milszym.roomindexmigrations.persistence.entity.DumplingsEntity
     entities = [
         DumplingsEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 abstract class MainDatabase : RoomDatabase() {

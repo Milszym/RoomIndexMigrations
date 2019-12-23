@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import net.milszym.roomindexmigrations.persistence.MainDatabase
 import net.milszym.roomindexmigrations.persistence.MainDatabase.Companion.MAIN_DATABASE_NAME
+import net.milszym.roomindexmigrations.persistence.MainDatabaseMigrations.MIGRATIONS
 import net.milszym.roomindexmigrations.persistence.entity.DumplingsEntity.Companion.DUMPLINGS_TABLE_NAME
 import java.util.*
 
@@ -19,8 +20,13 @@ class App: Application() {
             this,
             MainDatabase::class.java,
             MAIN_DATABASE_NAME
-        ).allowMainThreadQueries().build()
+        ).allowMainThreadQueries()
+            .addMigrations(*MIGRATIONS)
+            .build()
 
-        database.query("INSERT INTO $DUMPLINGS_TABLE_NAME (?, ?)", arrayOf(UUID.randomUUID().toString(), "Dumplings With Skwarki"))
+        database.query("INSERT INTO $DUMPLINGS_TABLE_NAME VALUES (?, ?)", arrayOf(
+            UUID.randomUUID().toString(),
+            "Dumplings With Skwarki"
+        ))
     }
 }
