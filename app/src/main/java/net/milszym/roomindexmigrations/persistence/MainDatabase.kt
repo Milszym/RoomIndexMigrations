@@ -13,6 +13,6 @@ import net.milszym.roomindexmigrations.persistence.entity.DumplingsEntity
 )
 abstract class MainDatabase : RoomDatabase() {
     companion object {
-        const val MAIN_DATABASE_NAME = "main_database"
+        const val MAIN_DATABASE_NAME = "MainDatabase"
     }
 }
