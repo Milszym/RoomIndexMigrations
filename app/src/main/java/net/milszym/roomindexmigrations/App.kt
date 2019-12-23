@@ -5,6 +5,7 @@ import androidx.room.Room
 import net.milszym.roomindexmigrations.persistence.MainDatabase
 import net.milszym.roomindexmigrations.persistence.MainDatabase.Companion.MAIN_DATABASE_NAME
 import net.milszym.roomindexmigrations.persistence.entity.DumplingsEntity.Companion.DUMPLINGS_TABLE_NAME
+import java.util.*
 
 class App: Application() {
     override fun onCreate() {
@@ -20,6 +21,6 @@ class App: Application() {
             MAIN_DATABASE_NAME
         ).allowMainThreadQueries().build()
 
-        database.query("INSERT INTO $DUMPLINGS_TABLE_NAME (?, ?)", arrayOf("1", "Dumplings With Skwarki"))
+        database.query("INSERT INTO $DUMPLINGS_TABLE_NAME (?, ?)", arrayOf(UUID.randomUUID().toString(), "Dumplings With Skwarki"))
     }
 }
